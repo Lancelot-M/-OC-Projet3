@@ -1,0 +1,21 @@
+==> SEPARER MOTEUR JEU / AFFICHAGE <==
+
+1/ Objet du jeu:
+
+	-MURS
+	-CHEMINS
+	-OBJETS
+	-JOUEUR
+	-GARDIEN
+
+2/ Mécanique du jeu:
+
+	-Déplacement
+	-Check inventaire
+	-Check fin
+
+3/ Affichage:
+
+	-Print map
+	-Print mouvement
+	-Print fin

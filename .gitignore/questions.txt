@@ -1,0 +1,8 @@
+-pk je dois import dans ma fonction (getch in player.move)
+-les attributs d'objet se foont ds l'orde a l'initialisation(appel de fonction ne marche pas sinon)
+-une methode de classe peut elle appeller les attribut d'un groupe d'objet? si oui et d'une autre classe? (player.move demander a labyrinthe.pos ?)
+-pk bug au depart le chemin ne se créé par sur la case de mac...
+
+-apprend: enumerate
+-apprend: methode magic // speciale
+-apprend: docstring ++ virtualenv
