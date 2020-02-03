@@ -1,4 +1,4 @@
 Requirements.txt
 __pycache__
 config.py
-
+*/__pycache__
