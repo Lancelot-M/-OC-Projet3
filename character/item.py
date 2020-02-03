@@ -1,4 +1,4 @@
-from position.position import *
+from position.position import Position
 
 class Items(Position):
 

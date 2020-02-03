@@ -1,10 +1,4 @@
-from screen.screen import *
-from position.position import Position
-from mapp.labyrinthe import *
-from mapp.structure import *
-from character.ennemy import *
-from character.item import *
-from character.player import *
+""" Classe qui permet de gerer les interactions entre objet."""
 
 class Moteur:
 
@@ -21,22 +15,23 @@ class Moteur:
             key = getch.getch()
             new_pos = self.player.way(key)
             if new_pos in self.mapp.path.pos:
-                if new_pos == self.ennemy.pos[0]:
+                if new_pos == self.ennemy.coord:
                     if self.player.inventory == "empty":
                         self.screen.game_loose()
                         exit()
                     else:
                         self.screen.game_win()
                         exit()
-                if new_pos == self.item.pos[0]:
+                if new_pos in self.item.pos:
                     self.player.inventory = "seringue hypodermique"
-                self.mapp.ref[self.player.pos[0]] = " "
-                self.player.pos[0] = new_pos
-                self.mapp.ref[self.player.pos[0]] = "M"
+                self.mapp.ref[self.player.coord] = " "
+                self.player.coord = new_pos
+                self.mapp.ref[self.player.coord] = "M"
         else:
             exit()
 
     def play(self):
+        self.screen.game_start()
         while 1:
             self.screen.game_map()
             self.move()

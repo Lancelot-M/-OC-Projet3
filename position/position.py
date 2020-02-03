@@ -1,3 +1,4 @@
+"""Classe gerant les coordonnées."""
 class Position(object):
     @staticmethod
     def pos(dico, image="X"):

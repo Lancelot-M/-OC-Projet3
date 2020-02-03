@@ -1,5 +1,7 @@
-from position.position import *
-from mapp.structure import *
+"""Classe 'map level'"""
+
+from position.position import Position
+from mapp.structure import Structure
 
 class Labyrinthe(Position):
 
@@ -12,11 +14,15 @@ class Labyrinthe(Position):
     def mkdico(self):
         c = ""
         x = 0
+        y = 0
         map_ref = {}
         with open(self.name, "r") as f:
             c = f.read(1)
             while c:
-                map_ref[x] = c
+                if c == "\n":
+                    x = 0
+                    y += 1
+                map_ref[x, y] = c
                 x += 1
                 c = f.read(1)
             return map_ref

@@ -1,3 +1,4 @@
+"""Gestion de l'affichage."""
 class Screen:
     
     def __init__(self, map_ref):

@@ -1,5 +1,7 @@
 from position.position import *
 
+"""Classe représentant les éléments composants la carte.(murs/chemins/portes...)"""
+
 class Structure(Position):
 
     def __init__(self, map_ref, image=""):
