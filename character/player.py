@@ -1,25 +1,10 @@
-"""Classe gerant le joueur et ses intentions."""
 from position.position import Position
+from config import *
 
 class Player(Position):
 
+    """Classe contenant les stats du joueur."""
     def __init__(self, dico):
-        self.image = "M"
-        self.pos = Position.pos(dico, self.image)
+        self.pos = Position.pos(dico, HERO)
         self.coord = self.pos[0]
-        self.inventory = "empty"
-
-    def way(self, way):
-
-        x = self.coord[0]
-        y = self.coord[1]
-        if way == ('q' or 'Q'):
-            return (x - 1, y)
-        elif way == ('z' or 'Z'):
-            return (x, y - 1)
-        elif way == ('s' or 'S'):
-            return (x, y + 1)
-        elif way == ('d' or 'D'):
-            return (x + 1, y)
-        else:
-            exit()
+        self.inventory = []
