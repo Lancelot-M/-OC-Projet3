@@ -7,7 +7,11 @@ IMG_GARDIEN = "ressources/Gardien.png"
 
 #Représentatopn symbolique des objets et adresse de l'image.
 ITEM1 = "O"
-IMG_ITEM1 = "ressources/seringue40*40.png"
+IMG_ITEM1 = "ressources/IMAGE_1.png"
+ITEM2 = "I"
+IMG_ITEM2 = "ressources/IMAGE_2.png"
+ITEM3 = "P"
+IMG_ITEM3 = "ressources/IMAGE_3.png"
 
 #Représentatopn symbolique du héro et adresse de l'image.
 HERO = "M"

@@ -13,10 +13,10 @@ class Labyrinthe(Position):
         self.name = file_name
         self.ref = self.mkdico()
         self.wall = Structure(self.ref, image=WALL)
-        self.path = Structure(self.ref, image=[PATH, GARDIEN, ITEM1, HERO])
+        self.path = Structure(self.ref, image=[PATH, GARDIEN, HERO, ITEM1])
         self.player = Player(self.ref)
         self.gardien = Ennemy(self.ref)
-        self.items = Items(self.ref)
+        self.init_labyrinthe_items()
 
     def mkdico(self):
         c = ""
@@ -36,6 +36,14 @@ class Labyrinthe(Position):
                 c = f.read(1)
             return map_ref
 
+    def init_labyrinthe_items(self):
+        self.item1 = Items(self.ref, ITEM1)
+        self.item2 = Items(self.ref, ITEM2)
+        self.item3 = Items(self.ref, ITEM3)
+        self.ref[self.item1.pos] = ITEM1
+        self.ref[self.item2.pos] = ITEM2
+        self.ref[self.item3.pos] = ITEM3
+
     def find_coord(self, key):
 
         x = self.player.coord[0]
@@ -48,8 +56,6 @@ class Labyrinthe(Position):
             return (x, y + 40)
         elif key == pygame.K_RIGHT:
             return (x + 40, y)
-        else:
-            exit()
 
     def move(self, key):
 
@@ -57,16 +63,20 @@ class Labyrinthe(Position):
             new_coord = self.find_coord(key)
             if new_coord in self.path.pos:
                 if new_coord == self.gardien.coord:
-                    if self.player.inventory == []:
-                        print("YOU LOOSE")
-                        exit()
+                    if len(self.player.inventory) < 3:
+                        return("LOOSE")
                     else:
-                        print("YOU WIN")
-                        exit()
-                if new_coord in self.items.pos:
-                    self.player.inventory.append("seringue hypodermique")
+                        return("WIN")
+                if new_coord == self.item1.pos:
+                    if "AIGUILLE" not in self.player.inventory:
+                        self.player.inventory.append("AIGUILLE")
+                if new_coord == self.item3.pos:
+                    if "ETHER" not in self.player.inventory:
+                        self.player.inventory.append("ETHER")
+                if new_coord == self.item2.pos:
+                    if "TUBE" not in self.player.inventory:
+                        self.player.inventory.append("TUBE")
                 self.ref[self.player.coord] = PATH
                 self.player.coord = new_coord
                 self.ref[self.player.coord] = HERO
-        else:
-            exit()
+        return("play")
