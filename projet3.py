@@ -1,76 +1,66 @@
+""" Fichier contenant le main du jeu."""
+
 import pygame
-import random
-from config import *
+from config import GAME_MAP, GARDIEN, ITEM1, ITEM2, ITEM3, HERO, WALL
 from mapp.labyrinthe import Labyrinthe
+from screen.screen import Screen
+from screen.characters import Character
+from screen.menu import Menu
 
 class Game(object):
+    """ Classe representant le jeu. Interaction pygame et labyrinthe."""
 
     def __init__(self):
         self.game = Labyrinthe(GAME_MAP)
-        self.init_pygame_elements()
+        self.screen = Screen()
+        self.menu = Menu()
+        self.character = Character()
         self.game_status = ""
 
-    def init_pygame_elements(self):
-        pygame.init()
-        self.screen = pygame.display.set_mode((600, 600))
-        pygame.display.set_caption("Labyrinthe de l'enfer")
-        self.tempon = pygame.image.load(IMG_WALL)
-        self.wall = self.tempon.subsurface((40, 40, 40, 40))
-        self.init_pygame_items()
-        self.init_pygame_characters()
-    
-    def init_pygame_items(self):
-        self.item1 = pygame.image.load(IMG_ITEM1)
-        self.item2 = pygame.image.load(IMG_ITEM2)
-        self.item3 = pygame.image.load(IMG_ITEM3)
-    
-    def init_pygame_characters(self):
-        self.gardien = pygame.image.load(IMG_GARDIEN)
-        self.hero = pygame.image.load(IMG_HERO)
-
-    def init_pygame_menu(self):
-        self.font = pygame.font.SysFont("abyssinicasil", 50)
-        self.font1 = pygame.font.SysFont("abyssinicasil", 20)
-        self.text = self.font.render("Jeu Du Labyrinthe", True, (255, 255, 255))
-        self.text1 = self.font1.render("Enter pour commencer un partie", True, (255, 255, 255))
-        self.win = self.font.render("YOU WIN !!!", True, (0, 255, 0))
-        self.loose = self.font.render("YOU LOOSE...", True, (255, 0, 0))
-
-
     def print_menu(self):
-        self.init_pygame_menu()
-        self.screen.fill((0, 0, 0))
-        self.screen.blit(self.text, (90, 50))
-        self.screen.blit(self.text1, (150, 200))
+        """Fonction d'affichage menu."""
+        self.screen.screen.fill((0, 0, 0))
+        self.screen.screen.blit(self.menu.text, (90, 50))
+        self.screen.screen.blit(self.menu.text1, (150, 200))
         if self.game_status == "WIN":
-            self.screen.blit(self.win, (90, 400))
+            self.screen.screen.blit(self.menu.win, (90, 400))
         elif self.game_status == "LOOSE":
-            self.screen.blit(self.loose, (90, 400))
+            self.screen.screen.blit(self.menu.loose, (90, 400))
         pygame.display.flip()
-
     def print_screen(self):
-        self.screen.fill((0, 0, 0))
+        """Fonction affichage labyrinthe."""
+        self.screen.screen.fill((0, 0, 0))
         for key, value in self.game.ref.items():
             if value == HERO:
-                self.screen.blit(self.hero, key)
+                self.screen.screen.blit(self.character.hero, key)
             elif value == GARDIEN:
-                self.screen.blit(self.gardien, key)
+                self.screen.screen.blit(self.character.gardien, key)
             elif value == WALL:
-                self.screen.blit(self.wall, key)
+                self.screen.screen.blit(self.screen.wall, key)
             elif value == ITEM1:
-                self.screen.blit(self.item1, self.game.item1.pos)
+                self.screen.screen.blit(self.character.item1, self.game.movable.item1.pos)
             elif value == ITEM2:
-                self.screen.blit(self.item2, self.game.item2.pos)
+                self.screen.screen.blit(self.character.item2, self.game.movable.item2.pos)
             elif value == ITEM3:
-                self.screen.blit(self.item3, self.game.item3.pos)
+                self.screen.screen.blit(self.character.item3, self.game.movable.item3.pos)
         pygame.display.flip()
-
     def new_round(self):
+        """Reinitialisation du labyrinthe."""
         self.game = Labyrinthe(GAME_MAP)
-    
+    def round_loop(self):
+        """Boucle affichage/deplacement dans labyrinthe."""
+        while self.game_status == "play":
+            self.print_screen()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                elif event.type == pygame.KEYDOWN:
+                    self.game_status = self.game.move(event.key)
     def main_loop(self):
+        """Fonction principale du jeu."""
         running = True
-        while running:          
+        while running:
             self.print_menu()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -78,18 +68,16 @@ class Game(object):
                     running = False
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
+                        self.new_round()
                         self.game_status = "play"
-                        while self.game_status == "play":
-                            self.print_screen()
-                            for event in pygame.event.get():
-                                if event.type == pygame.QUIT:
-                                    pygame.quit()
-                                    running = False
-                                elif event.type == pygame.KEYDOWN:
-                                    self.game_status = self.game.move(event.key)
-                    self.new_round()
+            if self.game_status == "play":
+                self.round_loop()
 
 if __name__ == '__main__':
 
-    launcher = Game()
-    launcher.main_loop()
+    def launcher():
+        """Fonction permettant de lancer le jeu."""
+        game = Game()
+        game.main_loop()
+
+    launcher()

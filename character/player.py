@@ -1,5 +1,7 @@
+"""Fichier contenant inventaire et position du joueur."""
+
 from position.position import Position
-from config import *
+from config import HERO
 
 class Player(Position):
 
