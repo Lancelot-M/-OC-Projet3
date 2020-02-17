@@ -15,7 +15,6 @@ Représentation texte du labyrinthe :
   '  ' pour le chemin  
   'M' pour MacGyver  
   'G' pour le Gardien   
-  'O' pour la seringue  
 
 ## Contrôles.
 Pour déplacer le héro dans le labyrinthe utiliser les flèches du clavier.
