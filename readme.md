@@ -11,11 +11,11 @@ Si les prérequis sont installés pour lancer le jeu, executer le main du dossie
 Il est possible de changer les images du personnage, du gardien ou des objets. Pour cela choisir un fichier.png de 40*40 pixels, le placer dans le dossier ressources.py et modifier le chemin correspondant dans le fichier config.py.
 
 Représentation texte du labyrinthe :
-"x" == Les murs
-" " == Le chemin
-"M" == MacGyver
-"G" == Le Gardien
-"O" == La seringue
+  -"x" == Les murs
+  -" " == Le chemin
+  -"M" == MacGyver
+  -"G" == Le Gardien
+  -"O" == La seringue
 
 
 ## Contrôles.
