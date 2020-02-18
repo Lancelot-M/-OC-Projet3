@@ -1,9 +1,9 @@
-"""Fichier represant les parties en dur de la carte."""
+"""File representing the hard parts of the card"""
 
 from position.position import Position
 
 class Structure(Position):
 
-    """Classe representant les elements non mobiles (murs/chemins)"""
+    """Class representing non-movable elements (walls / paths)."""
     def __init__(self, map_ref, image=""):
         self.pos = Position.pos(map_ref, image)

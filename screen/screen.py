@@ -1,10 +1,10 @@
-"""Fichier contenant l'affichage du labyrinthe."""
+"""File containing the labyrinth display."""
 
 import pygame
 from config import IMG_WALL
 
 class Screen(object):
-    """Classe d'initialisation."""
+    """Initialization class."""
 
     def __init__(self):
         pygame.init()

@@ -1,4 +1,4 @@
-"""Fichier contenant la classe represantant la carte et ses composantes."""
+"""File containing the class representing the card and its components."""
 
 import pygame
 from config import WALL, HERO, GARDIEN, ITEM1, ITEM2, ITEM3, PATH
@@ -8,7 +8,7 @@ from character.characters import Movable
 
 class Labyrinthe(Position):
 
-    """Classe contenant les elements du jeu.La gestion des deplacements se fait a traves elle."""
+    """Class containing the elements of the game. The management of displacements is done through it."""
     def __init__(self, map_file):
         self.name = map_file
         self.ref = self.mkdico()
@@ -18,12 +18,12 @@ class Labyrinthe(Position):
         self.init_labyrinthe_items()
 
     def init_labyrinthe_items(self):
-        """Initialisation d'objets sur une position aleatoire."""
+        """Initialization of objects on a random position."""
         self.ref[self.movable.item1.pos] = ITEM1
         self.ref[self.movable.item2.pos] = ITEM2
         self.ref[self.movable.item3.pos] = ITEM3
     def mkdico(self):
-        """Dictionnaire [coordonnee] == [symbol]"""
+        """Dictionary [coordinate] == [symbol]"""
         text = ""
         abscisse = 0
         ordonnee = 0
@@ -54,7 +54,7 @@ class Labyrinthe(Position):
             return abscisse + 40, ordonnee
         return None
     def move(self, key):
-        """Gestion de deplacement du hero."""
+        """Hero movement management"""
         if self.movable.player:
             new_coord = self.find_coord(key)
             if new_coord in self.path.pos:

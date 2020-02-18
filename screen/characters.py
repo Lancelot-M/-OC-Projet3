@@ -1,10 +1,10 @@
-"""Fichier contenant l'affichage des elements du labyrinthe."""
+"""File containing display elements of the labyrinth."""
 
 import pygame
 from config import IMG_GARDIEN, IMG_HERO, IMG_ITEM1, IMG_ITEM2, IMG_ITEM3
 
 class Character(object):
-    """Classe contenant l'affichage personnage/objets."""
+    """Initialization class."""
 
     def __init__(self):
         self.gardien = pygame.image.load(IMG_GARDIEN)

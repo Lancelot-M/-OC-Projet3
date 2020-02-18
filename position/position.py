@@ -1,10 +1,10 @@
-"""Fichier contenant la fonction qui cherche la coordonnee dans le dict."""
+"""File containing the function that searches for the coordinate in the dictionary."""
 
 class Position(object):
-    """Calcul des coordonnees."""
+    """Calculation of coordinates."""
     @staticmethod
     def pos(dico, image=""):
-        """Methode statique."""
+        """Static method."""
         pos = []
         for key, value in dico.items():
             if value in image:

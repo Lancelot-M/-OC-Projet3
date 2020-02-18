@@ -1,4 +1,4 @@
-""" Fichier contenant le main du jeu."""
+""" File containing the main fonction."""
 
 import pygame
 from config import GAME_MAP, GARDIEN, ITEM1, ITEM2, ITEM3, HERO, WALL
@@ -8,7 +8,7 @@ from screen.characters import Character
 from screen.menu import Menu
 
 class Game(object):
-    """ Classe representant le jeu. Interaction pygame et labyrinthe."""
+    """ Class representative of the game. Interaction pygame and labyrinthe."""
 
     def __init__(self):
         self.game = Labyrinthe(GAME_MAP)
@@ -18,7 +18,7 @@ class Game(object):
         self.game_status = ""
 
     def print_menu(self):
-        """Fonction d'affichage menu."""
+        """Function to display menu."""
         self.screen.screen.fill((0, 0, 0))
         self.screen.screen.blit(self.menu.text, (90, 50))
         self.screen.screen.blit(self.menu.text1, (150, 200))
@@ -28,7 +28,7 @@ class Game(object):
             self.screen.screen.blit(self.menu.loose, (90, 400))
         pygame.display.flip()
     def print_screen(self):
-        """Fonction affichage labyrinthe."""
+        """Function to display labyrinth."""
         self.screen.screen.fill((0, 0, 0))
         for key, value in self.game.ref.items():
             if value == HERO:
@@ -45,10 +45,10 @@ class Game(object):
                 self.screen.screen.blit(self.character.item3, self.game.movable.item3.pos)
         pygame.display.flip()
     def new_round(self):
-        """Reinitialisation du labyrinthe."""
+        """Reset labyrinth."""
         self.game = Labyrinthe(GAME_MAP)
     def round_loop(self):
-        """Boucle affichage/deplacement dans labyrinthe."""
+        """Loop display and move in labyrinth."""
         while self.game_status == "play":
             self.print_screen()
             for event in pygame.event.get():
@@ -58,7 +58,7 @@ class Game(object):
                 elif event.type == pygame.KEYDOWN:
                     self.game_status = self.game.move(event.key)
     def main_loop(self):
-        """Fonction principale du jeu."""
+        """Main function"""
         running = True
         while running:
             self.print_menu()
@@ -76,7 +76,7 @@ class Game(object):
 if __name__ == '__main__':
 
     def launcher():
-        """Fonction permettant de lancer le jeu."""
+        """Function to start the game."""
         game = Game()
         game.main_loop()
 

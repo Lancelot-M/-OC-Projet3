@@ -1,9 +1,9 @@
-"""Fichier contenant l'affichage du menu."""
+"""File containing the menu display."""
 
 import pygame
 
 class Menu(object):
-    """Classe d'initialisation."""
+    """Initialization class."""
 
     def __init__(self):
         self.font = pygame.font.SysFont("abyssinicasil", 50)
