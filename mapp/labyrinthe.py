@@ -4,7 +4,7 @@ import pygame
 from config import WALL, HERO, GARDIEN, ITEM1, ITEM2, ITEM3, PATH
 from position.position import Position
 from mapp.structure import Structure
-from character.characters import Movable
+from character.init_movable import Movable
 
 class Labyrinthe(Position):
 

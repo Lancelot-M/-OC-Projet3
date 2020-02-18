@@ -47,16 +47,21 @@ class Game(object):
     def new_round(self):
         """Reset labyrinth."""
         self.game = Labyrinthe(GAME_MAP)
+    def quit_game(self):
+        pygame.quit()
+        exit()
     def round_loop(self):
         """Loop display and move in labyrinth."""
         while self.game_status == "play":
             self.print_screen()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    exit()
+                    self.quit_game()
                 elif event.type == pygame.KEYDOWN:
-                    self.game_status = self.game.move(event.key)
+                    if event.key == pygame.K_ESCAPE:
+                        self.quit_game()
+                    else:
+                        self.game_status = self.game.move(event.key)
     def main_loop(self):
         """Main function"""
         running = True
@@ -64,12 +69,13 @@ class Game(object):
             self.print_menu()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    running = False
+                    self.quit_game()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
                         self.new_round()
                         self.game_status = "play"
+                    elif event.key == pygame.K_ESCAPE:
+                        self.quit_game()
             if self.game_status == "play":
                 self.round_loop()
 
