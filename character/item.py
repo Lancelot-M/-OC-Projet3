@@ -4,6 +4,7 @@ from random import choice
 from config import PATH
 from position.position import Position
 
+
 class Items(Position):
 
     """Initilization class"""

@@ -2,6 +2,7 @@
 
 from position.position import Position
 
+
 class Structure(Position):
 
     """Class representing non-movable elements (walls / paths)."""

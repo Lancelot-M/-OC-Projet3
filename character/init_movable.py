@@ -5,6 +5,7 @@ from character.player import Player
 from character.item import Items
 from config import ITEM1, ITEM2, ITEM3
 
+
 class Movable(object):
 
     """Initialization class"""

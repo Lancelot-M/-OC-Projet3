@@ -3,6 +3,7 @@
 import pygame
 from config import IMG_WALL
 
+
 class Screen(object):
     """Initialization class."""
 
@@ -12,4 +13,3 @@ class Screen(object):
         pygame.display.set_caption("Labyrinthe de l'enfer")
         tempon = pygame.image.load(IMG_WALL)
         self.wall = tempon.subsurface((40, 40, 40, 40))
-

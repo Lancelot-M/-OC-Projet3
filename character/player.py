@@ -3,6 +3,7 @@
 from position.position import Position
 from config import HERO
 
+
 class Player(Position):
 
     """Class containing player stats."""

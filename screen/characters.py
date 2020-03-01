@@ -3,6 +3,7 @@
 import pygame
 from config import IMG_GARDIEN, IMG_HERO, IMG_ITEM1, IMG_ITEM2, IMG_ITEM3
 
+
 class Character(object):
     """Initialization class."""
 

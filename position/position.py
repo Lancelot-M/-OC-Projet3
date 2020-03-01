@@ -1,4 +1,5 @@
-"""File containing the function that searches for the coordinate in the dictionary."""
+"""File containing the function that searches for the coordinate."""
+
 
 class Position(object):
     """Calculation of coordinates."""

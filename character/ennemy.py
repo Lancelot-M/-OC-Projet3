@@ -3,6 +3,7 @@
 from position.position import Position
 from config import GARDIEN
 
+
 class Ennemy(Position):
 
     """Initialization class"""
