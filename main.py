@@ -1,3 +1,5 @@
 from game import Game
 
-Game.launcher()
+if __name__ == '__main__':
+    
+    Game.launcher()
